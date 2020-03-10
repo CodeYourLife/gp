@@ -5,8 +5,10 @@
 {% bootstrap_javascript jquery=1 %}
 {% bootstrap_messages %}
 <!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
+<script src "https://cdn.datatables.net/plug-ins/1.10.15/sorting/stringMonthYear.js"></script>
 <script>
-
 $(document).ready(function() {
     $( ".navbar-nav .nav-item" ).bind( "click", function(event) {
         var clickedItem = $( this );
@@ -33,18 +35,17 @@ $(document).ready(function() {
       </button>
       <a class="active navbar-brand" href="/project_tracker">Gerloff Painting<span class="sr-only">(current)</span</a>
     </div>
-
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="nav-item background"><a href="/project_tracker">Home</a></li>
-	<li class="nav-item audit"><a href="/project_tracker">View Job List</a></li>
+        <li class="nav-item index"><a href="/project_tracker">Home</a></li>
+	<li class="nav-item job_list"><a href="/project_tracker/job_list">View Job List</a></li>
 	<li class="nav-item active_jobs"><a href="/project_tracker">Open Items</a></li>
-	<li class="nav-item active_jobs"><a href="/project_tracker">Project Schedule</a></li>
-	<li class="nav-item active_jobs"><a href="/project_tracker">Inventory Control</a></li>
-	<li class="nav-item active_jobs"><a href="/project_tracker">Wallcovering</a></li>
-	<li class="nav-item active_jobs"><a href="/project_tracker">GoTo Job Finder</a></li>
-	<li class="nav-item active_jobs"><a href="/project_tracker">Book New Job</a></li>
+	<li class="nav-item"><a href="/">Project Schedule</a></li>
+	<li class="nav-item"><a href="/">Inventory Control</a></li>
+	<li class="nav-item"><a href="/">Wallcovering</a></li>
+	<li class="nav-item"><a href="/">GoTo Job Finder</a></li>
+	<li class="nav-item"><a href="/">Book New Job</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
