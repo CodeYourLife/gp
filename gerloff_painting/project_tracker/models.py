@@ -42,7 +42,7 @@ class Checklist(models.Model):
 	category = models.CharField(null=True, max_length=1000)
 	checklist_item = models.CharField(null=True, max_length=2000)
 	is_closed = models.BooleanField(default=False)
-	job_number = models.CharField(null=True, max_length=5)
+	job_number = models.CharField(null=True, max_length=10)
 	notes = models.CharField(null=True, max_length=2500)
 	job_start_date_from_schedule = models.DateTimeField(null=True, blank=True)
 	cop = models.BooleanField(default=False)
@@ -92,7 +92,7 @@ class Estimates(models.Model):
 
 class Extra_Work_Tickets(models.Model):
 	id = models.IntegerField(primary_key=True)
-	job_number = models.CharField(null=True, max_length=50)
+	job_number = models.CharField(null=True, max_length=10)
 	ewt_number = models.IntegerField(default=0)
 	description = models.CharField(null=True, max_length=2000)
 	date_added = models.DateTimeField(null=True, blank=True)
@@ -103,7 +103,7 @@ class Extra_Work_Tickets(models.Model):
 
 class Incoming_Wall_Covering(models.Model):
 	id = models.IntegerField(primary_key=True)
-	job_number = models.CharField(null=True, max_length=50)
+	job_number = models.CharField(null=True, max_length=10)
 	orders_primary_key = models.IntegerField(default=0)
 	wallcovering_primary_key = models.IntegerField(default=0)
 	package_primary_key = models.IntegerField(default=0)
@@ -144,7 +144,7 @@ class Inventory(models.Model):
 	
 class Jobs(models.Model):
 	id = models.IntegerField(primary_key=True)
-	job_number = models.IntegerField(default=0)
+	job_number = models.CharField(null=False, max_length=10)
 	job_name = models.CharField(null=True, max_length=250)
 	estimator = models.CharField(null=True, max_length=50)
 	foreman = models.CharField(null=True, max_length=50)
@@ -220,7 +220,7 @@ class Orders(models.Model):
 	id = models.IntegerField(primary_key=True)
 	po_number = models.IntegerField(default=0)
 	item_number = models.CharField(null=True, max_length=50)
-	job_number = models.IntegerField(default=0)
+	job_number = models.CharField(null=False,max_length=10)
 	wallcovering_id = models.IntegerField(default=0)
 	code = models.CharField(null=True, max_length=50)
 	vendor = models.CharField(null=True, max_length=250)
@@ -235,7 +235,7 @@ class Orders(models.Model):
 
 class Outgoing_Wallcovering(models.Model):
 	id = models.IntegerField(primary_key=True)
-	job_number = models.IntegerField(default=0)
+	job_number = models.CharField(null=False, max_length=10)
 	package_id = models.IntegerField(default=0)
 	packages_out = models.IntegerField(default=0)
 	date_out = models.DateTimeField(null=True, blank=True)
@@ -245,21 +245,21 @@ class Outgoing_Wallcovering(models.Model):
 class Packages(models.Model):
 	id = models.IntegerField(primary_key=True)
 	wallcovering_id = models.IntegerField(default=0)
-	job_number = models.IntegerField(default=0)
+	job_number = models.CharField(null=False, max_length=10)
 	package_description = models.CharField(null=True, max_length=1000)
 	is_closed = models.BooleanField(default=False)
 	job_name = models.CharField(null=True, max_length=100)
 
 class Plans(models.Model):
 	id = models.IntegerField(primary_key=True)
-	job_number = models.IntegerField(default=0)
+	job_number = models.CharField(null=False, max_length=10)
 	job_name = models.CharField(null=True, max_length=250)
 	description = models.CharField(null=True, max_length=2000)
 	estimates_number = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
 	
 class Subcontractors(models.Model):
 	id = models.IntegerField(primary_key=True)
-	job_number = models.IntegerField(default=0)
+	job_number = models.CharField(null=False, max_length=10)
 	wallcovering_id = models.IntegerField(default=0)
 	subcontractor = models.CharField(null=True, max_length=250)
 	po_number = models.IntegerField(default=0)
@@ -271,7 +271,7 @@ class Subcontractors(models.Model):
 	
 class Submittal_Items(models.Model):
 	id = models.IntegerField(primary_key=True)
-	job_number = models.IntegerField(default=0)
+	job_number = models.CharField(null=False, max_length=10)
 	wallcovering_id = models.IntegerField(default=0)
 	item_number = models.IntegerField(default=0)
 	cop_primary_key = models.IntegerField(default=0)
@@ -282,7 +282,7 @@ class Submittal_Items(models.Model):
 
 class Submittals(models.Model):
 	id = models.IntegerField(primary_key=True)
-	job_number = models.IntegerField(default=0)
+	job_number = models.CharField(null=False, max_length=10)
 	wallcovering_id = models.IntegerField(default=0)
 	description = models.CharField(null=True, max_length=2000)
 	submittal_number = models.IntegerField(default=0)
@@ -293,7 +293,7 @@ class Submittals(models.Model):
 
 class Wallcovering(models.Model):
 	id = models.IntegerField(primary_key=True)
-	job_number = models.IntegerField(default=0)
+	job_number = models.CharField(null=False, max_length=10)
 	code = models.CharField(null=True, max_length=10)
 	vendor = models.CharField(null=True, max_length=25)
 	description = models.CharField(null=True, max_length=2000)
